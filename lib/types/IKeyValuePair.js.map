@@ -1,0 +1,1 @@
+{"version":3,"file":"IKeyValuePair.js","sourceRoot":"","sources":["IKeyValuePair.ts"],"names":[],"mappings":"","sourcesContent":["export type IKeyValuePair = {\r\n    key: string,\r\n    value: any\r\n}\r\n"]}

@@ -2,23 +2,26 @@ const path = require('path');
 const NodePolyfillPlugin = require("node-polyfill-webpack-plugin")
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
-    entry: './src/main.js',
+module.exports = [
+    {
+    name: 'demo',
+    entry: path.join(__dirname, 'demo', 'src', 'main.js'),
+        devtool: "inline-source-map",
     output: {
         filename: 'main.js',
-        path: path.resolve(__dirname, 'build'),
+        path: path.resolve(__dirname, 'demo', 'build'),
         clean: true
     },
     devServer: {
         static: {
-            directory: path.join(__dirname, "build"),
+            directory: path.join(__dirname, 'demo', 'build'),
         },
         hot: true,
     },
     plugins: [
         new NodePolyfillPlugin(),
         new HtmlWebpackPlugin({
-            template: path.join(__dirname, "public", "index.html"),
+            template: path.join(__dirname, 'demo', 'public', 'index.html'),
             title: 'Hot Module Replacement'
         })
     ],
@@ -36,4 +39,4 @@ module.exports = {
     resolve: {
         extensions: ["*", ".js", ".jsx"],    // <-- added `.jsx` here
     },
-};
+}];
